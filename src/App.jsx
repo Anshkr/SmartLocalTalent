@@ -27,6 +27,7 @@ import WorkerEarnings  from './pages/worker/WorkerEarnings'
 // Customer
 import CustomerDashboard    from './pages/customer/CustomerDashboard'
 import CustomerSearch       from './pages/customer/CustomerSearch'
+import CustomerSearchWithMap from './pages/customer/CustomerSearchWithMap'
 import WorkerProfilePage    from './pages/customer/WorkerProfilePage'
 import SendRequest          from './pages/customer/SendRequest'
 import CustomerRequests     from './pages/customer/CustomerRequests'
@@ -81,6 +82,7 @@ export default function App() {
         {/* Customer */}
         <Route path="/customer/home"           element={<Cu><CustomerDashboard /></Cu>} />
         <Route path="/customer/search"         element={<Cu><CustomerSearch /></Cu>} />
+        <Route path="/customer/search-map" element={<Cu><CustomerSearchWithMap /></Cu>} />
         <Route path="/customer/worker/:id"     element={<Cu><WorkerProfilePage /></Cu>} />
         <Route path="/customer/request/:id"    element={<Cu><SendRequest /></Cu>} />
         <Route path="/customer/requests"       element={<Cu><CustomerRequests /></Cu>} />
