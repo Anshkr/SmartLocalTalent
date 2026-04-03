@@ -1,0 +1,187 @@
+/* ─────────────────────────────────────────
+   BACK TO HOME BUTTON
+───────────────────────────────────────── */
+.auth-back-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: none; border: none; cursor: pointer;
+  font-size: 13px; font-weight: 600; color: var(--text3, #8fa398);
+  padding: 0; margin-bottom: 16px;
+  font-family: 'DM Sans', sans-serif; transition: color 0.15s;
+}
+.auth-back-btn:hover { color: var(--brand, #1a6b4a); }
+
+/* ─────────────────────────────────────────
+   PROGRESS DOTS
+───────────────────────────────────────── */
+.auth-progress {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 20px;
+  justify-content: center;
+}
+.auth-prog-dot {
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 2px solid var(--border, #e2e8e4);
+  background: #fff; color: var(--text3, #9ca3af);
+  font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+}
+.auth-prog-dot.active {
+  border-color: var(--brand, #1a6b4a);
+  background: var(--brand, #1a6b4a); color: #fff;
+}
+.auth-prog-dot.done {
+  border-color: #22c55e; background: #22c55e; color: #fff;
+  font-size: 13px;
+}
+
+/* ─────────────────────────────────────────
+   PASSWORD FIELD WITH EYE TOGGLE
+───────────────────────────────────────── */
+.auth-pw-wrap {
+  position: relative; display: flex; align-items: center;
+}
+.auth-pw-wrap input {
+  width: 100%; padding-right: 40px !important;
+}
+.auth-eye-btn {
+  position: absolute; right: 12px;
+  background: none; border: none; cursor: pointer;
+  font-size: 16px; padding: 0; line-height: 1;
+  color: var(--text3, #9ca3af); transition: color 0.15s;
+}
+.auth-eye-btn:hover { color: var(--text2, #4b5a52); }
+
+/* Password strength bar */
+.auth-pw-strength {
+  display: flex; align-items: center; gap: 4px; margin-top: 7px;
+}
+.auth-pw-bar {
+  flex: 1; height: 4px; border-radius: 2px;
+  background: var(--border, #e2e8e4); transition: background 0.25s;
+}
+.auth-pw-bar.filled { background: var(--brand, #1a6b4a); }
+.auth-pw-bar:nth-child(1).filled { background: #ef4444; }
+.auth-pw-bar:nth-child(2).filled { background: #f59e0b; }
+.auth-pw-bar:nth-child(3).filled { background: #84cc16; }
+.auth-pw-bar:nth-child(4).filled { background: #22c55e; }
+.auth-pw-label {
+  font-size: 11px; font-weight: 700; color: var(--text3, #9ca3af);
+  min-width: 36px; text-align: right;
+}
+
+/* ─────────────────────────────────────────
+   OTP CODE INPUT
+───────────────────────────────────────── */
+.auth-otp-input {
+  letter-spacing: 0.25em !important;
+  font-size: 22px !important; font-weight: 800 !important;
+  text-align: center !important;
+  font-family: 'Courier New', monospace !important;
+  background: #f8faf9 !important;
+  border-color: var(--brand, #1a6b4a) !important;
+}
+
+/* ─────────────────────────────────────────
+   FORGOT PASSWORD TOTP INFO BOX
+───────────────────────────────────────── */
+.auth-totp-info {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: #fffbeb; border: 1px solid #fde68a;
+  border-radius: 10px; padding: 12px 14px;
+  font-size: 13px; color: #92400e; line-height: 1.5;
+}
+.auth-totp-icon { font-size: 20px; flex-shrink: 0; }
+
+/* ─────────────────────────────────────────
+   TOTP SETUP BOX (Step 4)
+───────────────────────────────────────── */
+.auth-totp-box {
+  background: #f8faf9; border: 1.5px solid var(--border, #e2e8e4);
+  border-radius: 14px; padding: 20px;
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+  margin: 4px 0;
+}
+.auth-qr-img {
+  width: 180px; height: 180px;
+  border-radius: 12px; border: 4px solid #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  display: block;
+}
+.auth-qr-placeholder {
+  width: 180px; height: 180px; border-radius: 12px;
+  background: #e8ede9; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 10px;
+  font-size: 13px; color: #9ca3af;
+}
+.auth-qr-spinner {
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 3px solid #e2e8e4;
+  border-top-color: var(--brand, #1a6b4a);
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.auth-totp-manual { text-align: center; }
+.auth-totp-manual-label {
+  font-size: 11px; font-weight: 600; color: #9ca3af;
+  text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;
+}
+.auth-totp-secret {
+  font-family: 'Courier New', monospace;
+  font-size: 13px; font-weight: 700; color: #111917;
+  background: #fff; border: 1px solid var(--border, #e2e8e4);
+  border-radius: 8px; padding: 8px 14px; letter-spacing: 0.1em;
+  word-break: break-all; text-align: center;
+  cursor: text; user-select: all;
+}
+
+/* ─────────────────────────────────────────
+   TOTP STEP LIST
+───────────────────────────────────────── */
+.auth-totp-steps {
+  display: flex; flex-direction: column; gap: 10px;
+  background: #f8faf9; border-radius: 12px; padding: 14px 16px;
+  border: 1px solid var(--border, #e2e8e4);
+}
+.auth-totp-step {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 13px; color: var(--text2, #4b5a52); line-height: 1.5;
+}
+.auth-totp-step-num {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--brand, #1a6b4a); color: #fff;
+  font-size: 11px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ─────────────────────────────────────────
+   TOTP WARNING + SUCCESS
+───────────────────────────────────────── */
+.auth-totp-warning {
+  font-size: 12px; color: #92400e;
+  background: #fffbeb; border: 1px solid #fde68a;
+  border-radius: 8px; padding: 8px 12px;
+  text-align: center; line-height: 1.5;
+}
+
+.auth-totp-success {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 12px; padding: 20px 0; text-align: center;
+}
+.auth-totp-success-icon { font-size: 48px; animation: popIn 0.4s ease; }
+@keyframes popIn {
+  0%   { transform: scale(0); opacity: 0; }
+  80%  { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.auth-totp-success p { font-size: 14px; color: #166534; font-weight: 600; }
+
+/* ─────────────────────────────────────────
+   SUCCESS MESSAGE
+───────────────────────────────────────── */
+.stp-success {
+  background: #f0fdf4; border: 1px solid #bbf7d0;
+  border-radius: 8px; padding: 10px 14px;
+  font-size: 13px; color: #166534; font-weight: 600;
+}

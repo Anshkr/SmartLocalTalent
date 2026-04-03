@@ -1,0 +1,240 @@
+/* ─────────────────────────────────────────
+   WORKER EARNINGS CARD (on dashboard)
+───────────────────────────────────────── */
+.wd-earnings-card {
+  background: linear-gradient(135deg, #0f2d1f 0%, #1a6b4a 100%);
+  border-radius: 16px; padding: 22px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 20px; flex-wrap: wrap;
+}
+.wd-earnings-left { display: flex; flex-direction: column; gap: 6px; }
+.wd-earnings-label  { font-size: 12px; color: rgba(255,255,255,0.6); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.wd-earnings-amount { font-size: 32px; font-weight: 800; color: #fff; font-family: 'Sora', sans-serif; line-height: 1; }
+.wd-earnings-sub    { font-size: 12px; color: rgba(255,255,255,0.5); }
+.wd-earnings-actions { display: flex; flex-direction: column; gap: 8px; }
+
+.wd-earnings-withdraw-btn {
+  background: #fff; color: #0f2d1f;
+  border: none; border-radius: 10px;
+  padding: 11px 22px; font-size: 14px; font-weight: 700;
+  cursor: pointer; font-family: 'DM Sans', sans-serif;
+  transition: all 0.15s; white-space: nowrap;
+}
+.wd-earnings-withdraw-btn:hover:not(:disabled) { background: #f0fdf4; }
+.wd-earnings-withdraw-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.wd-earnings-view-btn {
+  background: transparent; color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.2); border-radius: 10px;
+  padding: 8px 22px; font-size: 13px; font-weight: 600;
+  cursor: pointer; font-family: 'DM Sans', sans-serif;
+  transition: all 0.15s; text-align: center;
+}
+.wd-earnings-view-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+/* ─────────────────────────────────────────
+   WITHDRAWAL MODAL
+───────────────────────────────────────── */
+.wdl-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.55);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 999; padding: 20px;
+}
+
+.wdl-modal {
+  background: #fff; border-radius: 18px;
+  padding: 28px; max-width: 480px; width: 100%;
+  position: relative; max-height: 90vh; overflow-y: auto;
+  font-family: 'DM Sans', sans-serif;
+  animation: slideUp 0.25s ease;
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.wdl-close {
+  position: absolute; top: 16px; right: 16px;
+  background: #f4f6ff; border: none; border-radius: 50%;
+  width: 30px; height: 30px; font-size: 14px;
+  cursor: pointer; color: #6b7280; transition: all 0.15s;
+}
+.wdl-close:hover { background: #fee2e2; color: #ef4444; }
+
+.wdl-header { margin-bottom: 20px; }
+.wdl-title   { font-size: 20px; font-weight: 700; font-family: 'Sora', sans-serif; color: #111827; }
+.wdl-balance { font-size: 13px; color: #6b7280; margin-top: 4px; }
+.wdl-balance strong { color: #1a6b4a; font-weight: 700; }
+
+.wdl-form { display: flex; flex-direction: column; gap: 18px; }
+
+.wdl-field { display: flex; flex-direction: column; gap: 7px; }
+.wdl-field label { font-size: 13px; font-weight: 600; color: #374151; }
+.wdl-hint { font-size: 11px; color: #9ca3af; }
+
+.wdl-amount-row { display: flex; gap: 8px; }
+.wdl-amount-row input {
+  flex: 1; padding: 11px 14px;
+  border: 1.5px solid #e5e9f8; border-radius: 10px;
+  font-size: 16px; font-weight: 700;
+  font-family: 'DM Sans', sans-serif; outline: none;
+  transition: border-color 0.15s;
+}
+.wdl-amount-row input:focus { border-color: #1a6b4a; }
+
+.wdl-max-btn {
+  background: #e6f4ee; color: #1a6b4a;
+  border: none; border-radius: 10px;
+  padding: 0 16px; font-size: 13px; font-weight: 700;
+  cursor: pointer; font-family: 'DM Sans', sans-serif;
+  white-space: nowrap;
+}
+.wdl-max-btn:hover { background: #1a6b4a; color: #fff; }
+
+.wdl-quick-amounts { display: flex; gap: 8px; flex-wrap: wrap; margin-top: -8px; }
+.wdl-quick-btn {
+  padding: 6px 14px; border-radius: 20px;
+  border: 1.5px solid #e5e9f8; background: #fff;
+  font-size: 13px; font-weight: 600; color: #6b7280;
+  cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.12s;
+}
+.wdl-quick-btn:hover { border-color: #1a6b4a; color: #1a6b4a; }
+.wdl-quick-btn.active { background: #1a6b4a; border-color: #1a6b4a; color: #fff; }
+
+.wdl-methods { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.wdl-method-btn {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 4px; padding: 12px 8px;
+  border: 1.5px solid #e5e9f8; border-radius: 10px;
+  background: #fff; cursor: pointer; transition: all 0.15s;
+  font-family: 'DM Sans', sans-serif;
+}
+.wdl-method-btn span:first-child { font-size: 20px; }
+.wdl-method-btn span:last-child  { font-size: 11px; font-weight: 600; color: #6b7280; }
+.wdl-method-btn:hover { border-color: #1a6b4a; }
+.wdl-method-btn.active { border-color: #1a6b4a; background: #e6f4ee; }
+.wdl-method-btn.active span:last-child { color: #1a6b4a; }
+
+.wdl-field input[type="text"],
+.wdl-field input:not([type="number"]) {
+  padding: 11px 14px;
+  border: 1.5px solid #e5e9f8; border-radius: 10px;
+  font-size: 14px; font-family: 'DM Sans', sans-serif;
+  outline: none; transition: border-color 0.15s;
+}
+.wdl-field input:focus { border-color: #1a6b4a; }
+
+.wdl-error {
+  background: #fee2e2; border: 1px solid #fecaca;
+  border-radius: 8px; padding: 10px 14px;
+  font-size: 13px; color: #991b1b;
+}
+
+.wdl-submit {
+  background: #1a6b4a; color: #fff;
+  border: none; border-radius: 12px; padding: 14px;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; transition: background 0.15s;
+}
+.wdl-submit:hover:not(:disabled) { background: #134d35; }
+.wdl-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.wdl-note {
+  text-align: center; font-size: 12px; color: #9ca3af; line-height: 1.5;
+}
+
+.wdl-success {
+  text-align: center; padding: 20px 0;
+  font-size: 14px; color: #166534; font-weight: 600;
+  line-height: 1.6;
+}
+
+/* ─────────────────────────────────────────
+   ADMIN WITHDRAWALS PAGE
+───────────────────────────────────────── */
+.adw-page { display: flex; flex-direction: column; gap: 22px; max-width: 860px; font-family: 'DM Sans', sans-serif; }
+.adw-title { font-size: 22px; font-weight: 700; font-family: 'Sora', sans-serif; color: var(--ad-text, #111827); }
+.adw-sub   { font-size: 13px; color: var(--ad-text2, #6b7280); margin-top: 4px; }
+.adw-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 14px; }
+
+.adw-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+@media (max-width: 500px) { .adw-summary { grid-template-columns: 1fr; } }
+
+.adw-sum-card {
+  border-radius: 14px; padding: 18px;
+  display: flex; flex-direction: column; gap: 4px;
+  border: 1px solid transparent;
+}
+.adw-sum-card.amber  { background: #fffbeb; border-color: #fde68a; }
+.adw-sum-card.green  { background: #f0fdf4; border-color: #bbf7d0; }
+.adw-sum-card.red    { background: #fff1f2; border-color: #fecdd3; }
+
+.adw-sum-icon   { font-size: 22px; }
+.adw-sum-val    { font-size: 26px; font-weight: 800; font-family: 'Sora', sans-serif; color: var(--ad-text, #111827); }
+.adw-sum-label  { font-size: 12px; color: var(--ad-text2, #6b7280); }
+.adw-sum-amount { font-size: 14px; font-weight: 700; color: var(--ad-text, #111827); margin-top: 2px; }
+
+.adw-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.adw-tab {
+  padding: 7px 14px; border-radius: 20px;
+  border: 1.5px solid var(--ad-border, #e5e9f8);
+  background: var(--ad-surface, #fff);
+  font-size: 13px; font-weight: 500;
+  color: var(--ad-text2, #6b7280);
+  cursor: pointer; font-family: 'DM Sans', sans-serif;
+  display: flex; align-items: center; gap: 6px; transition: all 0.15s;
+}
+.adw-tab.active { background: #0d1117; color: #fff; border-color: #0d1117; }
+.adw-badge {
+  background: #ef4444; color: #fff;
+  font-size: 10px; font-weight: 700;
+  padding: 1px 7px; border-radius: 10px;
+}
+
+.adw-empty {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 10px; padding: 50px; color: var(--ad-text3, #9ca3af); font-size: 14px;
+}
+
+.adw-list { display: flex; flex-direction: column; gap: 10px; }
+
+.adw-card {
+  background: var(--ad-surface, #fff); border-radius: 14px;
+  border: 1.5px solid var(--ad-border, #e5e9f8);
+  padding: 16px 20px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap; transition: box-shadow 0.15s;
+}
+.adw-card:hover { box-shadow: 0 3px 14px rgba(0,0,0,0.06); }
+.adw-card.pending  { border-left: 4px solid #f59e0b; }
+.adw-card.approved { border-left: 4px solid #22c55e; }
+.adw-card.rejected { border-left: 4px solid #f87171; opacity: 0.7; }
+
+.adw-card-left { display: flex; align-items: center; gap: 14px; flex: 1; }
+.adw-method-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: var(--ad-surface2, #f9faff);
+  border: 1px solid var(--ad-border, #e5e9f8);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+.adw-card-info { flex: 1; }
+.adw-worker-name { font-size: 14px; font-weight: 700; color: var(--ad-text, #111827); }
+.adw-account     { font-size: 12px; color: var(--ad-text2, #6b7280); margin-top: 2px; }
+.adw-date        { font-size: 11px; color: var(--ad-text3, #9ca3af); margin-top: 4px; }
+
+.adw-card-right { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+.adw-amount { font-size: 20px; font-weight: 800; font-family: 'Sora', sans-serif; color: var(--ad-text, #111827); }
+.adw-status-badge { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
+
+.adw-actions { display: flex; gap: 6px; }
+.adw-btn {
+  padding: 7px 14px; border-radius: 8px;
+  font-size: 12px; font-weight: 700; cursor: pointer;
+  border: none; font-family: 'DM Sans', sans-serif; transition: all 0.15s;
+}
+.adw-btn.approve { background: #dcfce7; color: #166534; }
+.adw-btn.approve:hover:not(:disabled) { background: #16a34a; color: #fff; }
+.adw-btn.reject  { background: #fee2e2; color: #991b1b; }
+.adw-btn.reject:hover:not(:disabled)  { background: #dc2626; color: #fff; }
+.adw-btn:disabled { opacity: 0.5; cursor: not-allowed; }

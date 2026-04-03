@@ -1,0 +1,276 @@
+/* ── Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:wght@400;500&display=swap');
+@import "tailwindcss";
+
+
+/* ── Tokens ── */
+:root {
+  --brand:       #1a6b4a;
+  --brand-light: #e6f4ee;
+  --brand-dark:  #134d35;
+  --accent:      #f59e0b;
+  --surface:     #ffffff;
+  --surface2:    #f8faf9;
+  --border:      #e2e8e4;
+  --text:        #111917;
+  --text2:       #4b5a52;
+  --text3:       #8fa398;
+  --radius:      14px;
+  --shadow:      0 4px 24px rgba(0,0,0,0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--surface2);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ── Page wrapper ── */
+.stp-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background:
+    radial-gradient(ellipse at 20% 0%, #d1fae5 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 100%, #fef3c7 0%, transparent 60%),
+    var(--surface2);
+}
+
+/* ── Card ── */
+.stp-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 440px;
+  padding: 36px 40px;
+  animation: fadeUp 0.35s ease both;
+}
+
+.stp-card.wide { max-width: 540px; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Logo ── */
+.stp-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  font-family: 'Sora', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--brand);
+}
+
+.stp-logo-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--brand);
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* ── Section ── */
+.stp-section { display: flex; flex-direction: column; gap: 20px; }
+
+.stp-heading {
+  font-family: 'Sora', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.stp-sub {
+  font-size: 14px;
+  color: var(--text2);
+  margin-top: -14px;
+}
+
+.stp-back {
+  background: none;
+  border: none;
+  font-size: 13px;
+  color: var(--text3);
+  cursor: pointer;
+  padding: 0;
+  width: fit-content;
+}
+.stp-back:hover { color: var(--brand); }
+
+/* ── Fields ── */
+.stp-fields { display: flex; flex-direction: column; gap: 14px; }
+
+.stp-field { display: flex; flex-direction: column; gap: 6px; }
+
+.stp-field label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text2);
+}
+
+.stp-hint {
+  font-weight: 400;
+  color: var(--text3);
+  font-size: 12px;
+}
+
+.stp-field input,
+.stp-field select {
+  padding: 11px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  background: var(--surface);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.stp-field input:focus,
+.stp-field select:focus {
+  border-color: var(--brand);
+}
+
+.stp-field input::placeholder { color: var(--text3); }
+
+/* ── Buttons ── */
+.stp-btn {
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  border: none;
+  transition: all 0.15s;
+}
+
+.stp-btn.primary {
+  background: var(--brand);
+  color: white;
+}
+.stp-btn.primary:hover:not(:disabled) { background: var(--brand-dark); }
+.stp-btn.primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.stp-btn.outline {
+  background: transparent;
+  border: 1.5px solid var(--border);
+  color: var(--text2);
+}
+.stp-btn.outline:hover { border-color: var(--brand); color: var(--brand); }
+
+.stp-btn.full { width: 100%; }
+.stp-btn.half { flex: 1; }
+
+/* ── Role cards ── */
+.role-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.role-card {
+  padding: 20px 16px;
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.15s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.role-card:hover { border-color: var(--brand); background: var(--brand-light); }
+.role-card.active { border-color: var(--brand); background: var(--brand-light); }
+
+.role-icon { font-size: 28px; }
+.role-label { font-size: 15px; font-weight: 700; font-family: 'Sora', sans-serif; color: var(--text); }
+.role-desc { font-size: 12px; color: var(--text3); line-height: 1.4; }
+
+/* ── Skills grid ── */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.skill-chip {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text2);
+  cursor: pointer;
+  transition: all 0.12s;
+  font-family: 'DM Sans', sans-serif;
+}
+.skill-chip:hover { border-color: var(--brand); color: var(--brand); }
+.skill-chip.active {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: white;
+}
+
+/* ── Misc ── */
+.stp-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: -8px;
+}
+
+.stp-link { color: var(--brand); font-weight: 600; text-decoration: none; }
+.stp-link:hover { text-decoration: underline; }
+.stp-link.small { font-size: 13px; }
+
+.stp-footer-text { text-align: center; font-size: 13px; color: var(--text3); }
+
+.stp-error {
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  color: #be123c;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+}
+
+.stp-divider {
+  text-align: center;
+  position: relative;
+  color: var(--text3);
+  font-size: 12px;
+}
+.stp-divider::before, .stp-divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 38%;
+  height: 1px;
+  background: var(--border);
+}
+.stp-divider::before { left: 0; }
+.stp-divider::after { right: 0; }
+
+.demo-btns { display: flex; gap: 10px; }
