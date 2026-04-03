@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useAuthStore from '../../store/authStore'
-import CustomerLayout from '../../components/customer/CustomerLayout'
+import CustomerLayout from 'src/components/customer/CustomerLayout.jsx'
 import { getMyRequestsAPI } from '../../lib/api'
 
 export default function CustomerDashboard() {
