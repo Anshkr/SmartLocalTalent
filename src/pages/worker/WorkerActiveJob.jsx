@@ -42,9 +42,13 @@ export default function WorkerActiveJob() {
   // Socket.io
   useEffect(() => {
     if (!job) return
-    const socket = io(
-      import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000'
-    )
+    const socket = io(import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000', {
+      transports: ['polling', 'websocket'],
+      upgrade: true,
+      reconnection: true,
+      reconnectionAttempts: 5,
+      reconnectionDelay: 2000,
+    })
     socketRef.current = socket
     socket.emit('join_job', job.id)
 

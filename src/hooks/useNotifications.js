@@ -11,9 +11,13 @@ export default function useNotifications() {
   useEffect(() => {
     if (!user) return
 
-    const socket = io(
-      import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000'
-    )
+    const socket = io(import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000', {
+      transports: ['polling', 'websocket'],
+      upgrade: true,
+      reconnection: true,
+      reconnectionAttempts: 5,
+      reconnectionDelay: 2000,
+    })
     socketRef.current = socket
 
     // Join personal notification room
