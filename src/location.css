@@ -1,0 +1,27 @@
+/* ─────────────────────────────────────────
+   WORKER PROFILE — LOCATION BOX
+───────────────────────────────────────── */
+.wp-loc-box {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap;
+  background: #f8faf9; border: 1.5px solid #e2e8e4;
+  border-radius: 12px; padding: 16px 18px;
+}
+.wp-loc-info { display: flex; flex-direction: column; gap: 4px; }
+.wp-loc-status {
+  font-size: 14px; font-weight: 700;
+}
+.wp-loc-status.saved { color: #1a6b4a; }
+.wp-loc-status.empty { color: #9ca3af; }
+.wp-loc-coords { font-size: 12px; color: #6b7b72; font-family: monospace; }
+.wp-loc-area   { font-size: 12px; color: #9ca3af; }
+
+.wp-loc-btn {
+  background: #1a6b4a; color: #fff;
+  border: none; border-radius: 10px;
+  padding: 10px 18px; font-size: 13px; font-weight: 700;
+  cursor: pointer; font-family: 'DM Sans', sans-serif;
+  white-space: nowrap; transition: background 0.15s; flex-shrink: 0;
+}
+.wp-loc-btn:hover:not(:disabled) { background: #134d35; }
+.wp-loc-btn:disabled { opacity: 0.6; cursor: not-allowed; }

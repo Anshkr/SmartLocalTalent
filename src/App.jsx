@@ -8,6 +8,9 @@ import './phase8.css'
 import './phase9.css'
 import './phase10.css'
 import './auth-additions.css'
+import './settings.css'
+import './location.css'
+
 
 
 import LandingPage      from './pages/LandingPage'
@@ -23,6 +26,8 @@ import WorkerActiveJob from './pages/worker/WorkerActiveJob'
 import WorkerHistory   from './pages/worker/WorkerHistory'
 import WorkerProfile   from './pages/worker/WorkerProfile'
 import WorkerEarnings  from './pages/worker/WorkerEarnings'
+import WorkerSettings   from './pages/worker/WorkerSettings'
+
 
 // Customer
 import CustomerDashboard    from './pages/customer/CustomerDashboard'
@@ -35,6 +40,8 @@ import CustomerActiveJob    from './pages/customer/CustomerActiveJob'
 import CustomerProfile      from './pages/customer/CustomerProfile'
 import CustomerOrderHistory from './pages/customer/CustomerOrderHistory'
 import PaymentPage          from './pages/customer/PaymentPage'
+import CustomerSettings     from './pages/customer/CustomerSettings'
+
 
 // Admin
 import AdminOverview    from './pages/admin/AdminOverview'
@@ -78,6 +85,7 @@ export default function App() {
         <Route path="/worker/history"   element={<W><WorkerHistory /></W>} />
         <Route path="/worker/profile"   element={<W><WorkerProfile /></W>} />
         <Route path="/worker/earnings"  element={<W><WorkerEarnings /></W>} />
+        <Route path="/worker/settings"  element={<W><WorkerSettings /></W>} />
 
         {/* Customer */}
         <Route path="/customer/home"           element={<Cu><CustomerDashboard /></Cu>} />
@@ -90,6 +98,7 @@ export default function App() {
         <Route path="/customer/profile"        element={<Cu><CustomerProfile /></Cu>} />
         <Route path="/customer/orders"         element={<Cu><CustomerOrderHistory /></Cu>} />
         <Route path="/customer/payment/:jobId" element={<Cu><PaymentPage /></Cu>} />
+        <Route path="/customer/settings"       element={<Cu><CustomerSettings /></Cu>} />
 
         {/* Admin */}
         <Route path="/admin"             element={<Ad><AdminOverview /></Ad>} />

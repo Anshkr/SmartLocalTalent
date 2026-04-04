@@ -10,6 +10,7 @@ const NAV = [
   { to: '/customer/active',   icon: '⚡', label: 'Active Job'  },
   { to: '/customer/orders',   icon: '🧾', label: 'Orders'      },
   { to: '/customer/profile',  icon: '👤', label: 'Profile'     },
+  { to: '/customer/settings', icon: '⚙️', label: 'Settings'    },
 ]
 
 export default function CustomerLayout({ children }) {
@@ -24,7 +25,6 @@ export default function CustomerLayout({ children }) {
           <div className="cl-brand-icon">S</div>
           <span>SmartTalent</span>
         </div>
-
         <div className="cl-user-pill">
           <div className="cl-avatar">{user?.name?.[0] ?? 'C'}</div>
           <div>
@@ -32,7 +32,6 @@ export default function CustomerLayout({ children }) {
             <div className="cl-user-role">Customer account</div>
           </div>
         </div>
-
         <nav className="cl-nav">
           {NAV.map(({ to, icon, label }) => (
             <NavLink key={to} to={to}
@@ -43,8 +42,7 @@ export default function CustomerLayout({ children }) {
             </NavLink>
           ))}
         </nav>
-
-        <button className="cl-logout" onClick={() => { logout(); navigate('/login') }}>
+        <button className="cl-logout" onClick={() => { logout(); navigate('/') }}>
           ⎋ Sign out
         </button>
       </aside>
@@ -58,7 +56,7 @@ export default function CustomerLayout({ children }) {
             <div className="cl-brand-icon sm">S</div>
             <span>SmartTalent</span>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <div style={{ display:'flex', alignItems:'center', gap:8 }}>
             <NotificationBell />
             <div className="cl-avatar sm">{user?.name?.[0] ?? 'C'}</div>
           </div>
@@ -67,7 +65,7 @@ export default function CustomerLayout({ children }) {
         <div className="cl-content">{children}</div>
 
         <nav className="cl-bottom-nav">
-          {NAV.slice(0, 5).map(({ to, icon, label }) => (
+          {NAV.slice(0,5).map(({ to, icon, label }) => (
             <NavLink key={to} to={to}
               className={({ isActive }) => `cl-bottom-link ${isActive ? 'active' : ''}`}>
               <span className="cl-bottom-icon">{icon}</span>
