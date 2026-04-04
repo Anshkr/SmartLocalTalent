@@ -961,6 +961,42 @@ export default function LandingPage() {
         <div className="lp-footer-bottom">
           <span>© 2026 SmartTalentPlatform · All rights reserved.</span>
           <span>Made with ❤️ for local workers</span>
+
+          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+            <span style={{ color: 'rgba(255,255,255,.3)', fontSize: 13 }}>
+              Follow us
+            </span>
+
+            <a
+              className="lp-social-btn twitter"
+              href="https://twitter.com/smarttalent"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ width: 28, height: 28 }}
+            >
+              <TwitterIcon />
+            </a>
+
+            <a
+              className="lp-social-btn instagram"
+              href="https://instagram.com/smarttalent"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ width: 28, height: 28 }}
+            >
+              <InstagramIcon />
+            </a>
+
+            <a
+              className="lp-social-btn linkedin"
+              href="https://linkedin.com/company/smarttalent"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ width: 28, height: 28 }}
+            >
+              <LinkedInIcon />
+            </a>
+          </div>
         </div>
       </footer>
     </>
