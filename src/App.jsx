@@ -52,6 +52,7 @@ import AdminJobs        from './pages/admin/AdminJobs'
 import AdminDisputes    from './pages/admin/AdminDisputes'
 import AdminSettings    from './pages/admin/AdminSettings'
 import AdminWithdrawals from './pages/admin/AdminWithdrawals'
+import AdminAccounts from './pages/admin/AdminAccounts'
 
 const W  = ({ children }) => <ProtectedRoute allowedRoles={['WORKER']}>{children}</ProtectedRoute>
 const Cu = ({ children }) => <ProtectedRoute allowedRoles={['CUSTOMER']}>{children}</ProtectedRoute>
@@ -109,6 +110,7 @@ export default function App() {
         <Route path="/admin/withdrawals" element={<Ad><AdminWithdrawals /></Ad>} />
         <Route path="/admin/disputes"    element={<Ad><AdminDisputes /></Ad>} />
         <Route path="/admin/settings"    element={<Ad><AdminSettings /></Ad>} />
+        <Route path="/admin/accounts" element={<Ad><AdminAccounts /></Ad>} />
 
         {/* Fallback */}
         <Route path="*" element={<Navigate to="/" />} />

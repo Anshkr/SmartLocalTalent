@@ -35,13 +35,12 @@ export default function Login() {
       login(data.user, data.token)
 
       const role = (data.user.role || '').toUpperCase()
-      setStatus(`Welcome back! Redirecting…`)
+      setStatus('Welcome back! Redirecting…')
 
-      // Small delay so Zustand persist writes to localStorage before navigation
       setTimeout(() => {
-        if (role === 'WORKER')      navigate('/worker/dashboard', { replace: true })
-        else if (role === 'ADMIN')  navigate('/admin', { replace: true })
-        else                        navigate('/customer/home', { replace: true })
+        if (role === 'WORKER')     navigate('/worker/dashboard', { replace: true })
+        else if (role === 'ADMIN') navigate('/admin',            { replace: true })
+        else                       navigate('/customer/home',    { replace: true })
       }, 200)
 
     } catch (err) {
@@ -50,10 +49,9 @@ export default function Login() {
       setLoading(false)
 
       if (!err.response) {
-        // No response = network error / server sleeping
         setError('Cannot reach the server. It may be waking up — wait 30 seconds and try again.')
       } else if (err.response.status === 500) {
-        setError('Server error (500). Check Render logs — likely a database connection issue.')
+        setError('Server error (500). Please try again in a moment.')
       } else {
         setError(err.response?.data?.error || `Error ${err.response?.status}. Please try again.`)
       }
@@ -84,10 +82,8 @@ export default function Login() {
           <h1 className="stp-heading">Welcome back</h1>
           <p className="stp-sub">Sign in to your account</p>
 
-          {/* Error banner */}
           {error && <div className="stp-error">{error}</div>}
 
-          {/* Live status */}
           {status && !error && (
             <div style={{
               background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: 8,
@@ -103,9 +99,7 @@ export default function Login() {
             </div>
           )}
 
-          <style>{`
-            @keyframes loginSpin { to { transform: rotate(360deg); } }
-          `}</style>
+          <style>{`@keyframes loginSpin { to { transform: rotate(360deg); } }`}</style>
 
           <form onSubmit={handleSubmit}>
             <div className="stp-fields">
@@ -117,7 +111,6 @@ export default function Login() {
                   required autoFocus disabled={loading}
                 />
               </div>
-
               <div className="stp-field">
                 <label>Password</label>
                 <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
@@ -146,9 +139,14 @@ export default function Login() {
             </button>
           </form>
 
+          <p style={{ fontSize: 12, color: '#9ca3af', textAlign: 'center', marginTop: 6 }}>
+            ⚡ First sign-in may take 30–60s (server wakes up on Render free tier)
+          </p>
+
+          {/* Only worker + customer demos — no admin demo */}
           <div className="stp-divider"><span>or try a demo account</span></div>
 
-          <div className="demo-btns" style={{ flexWrap: 'wrap', gap: 8 }}>
+          <div className="demo-btns" style={{ gap: 8 }}>
             <button type="button" className="stp-btn outline half" disabled={loading}
               onClick={() => fillDemo('ramesh@demo.com', 'Worker@1234')}>
               👷 Worker demo
@@ -156,11 +154,6 @@ export default function Login() {
             <button type="button" className="stp-btn outline half" disabled={loading}
               onClick={() => fillDemo('priya@demo.com', 'Customer@1234')}>
               👤 Customer demo
-            </button>
-            <button type="button" className="stp-btn outline full" disabled={loading}
-              style={{ marginTop: 4 }}
-              onClick={() => fillDemo('admin@smarttalent.com', 'Admin@1234')}>
-              🛡️ Admin demo
             </button>
           </div>
 

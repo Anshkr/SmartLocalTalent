@@ -3,14 +3,15 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import useAuthStore from '../../store/authStore'
 
 const NAV = [
-  { to: '/admin',              icon: '▦',  label: 'Overview',   exact: true },
-  { to: '/admin/analytics',    icon: '📊', label: 'Analytics'              },
-  { to: '/admin/workers',      icon: '👷', label: 'Workers'                },
-  { to: '/admin/customers',    icon: '👤', label: 'Customers'              },
-  { to: '/admin/jobs',         icon: '📋', label: 'Jobs'                   },
-  { to: '/admin/withdrawals',  icon: '💸', label: 'Withdrawals'            },
-  { to: '/admin/disputes',     icon: '⚠️', label: 'Disputes'               },
-  { to: '/admin/settings',     icon: '⚙️', label: 'Settings'               },
+  { to: '/admin',             icon: '▦',  label: 'Overview',   exact: true },
+  { to: '/admin/analytics',   icon: '📊', label: 'Analytics'               },
+  { to: '/admin/workers',     icon: '👷', label: 'Workers'                 },
+  { to: '/admin/customers',   icon: '👤', label: 'Customers'               },
+  { to: '/admin/jobs',        icon: '📋', label: 'Jobs'                    },
+  { to: '/admin/withdrawals', icon: '💸', label: 'Withdrawals'             },
+  { to: '/admin/disputes',    icon: '⚠️', label: 'Disputes'                },
+  { to: '/admin/accounts',    icon: '🛡️', label: 'Admins'                  },
+  { to: '/admin/settings',    icon: '⚙️', label: 'Settings'                },
 ]
 
 export default function AdminLayout({ children }) {
@@ -48,7 +49,7 @@ export default function AdminLayout({ children }) {
           </div>
         </div>
 
-        <button className="al-logout" onClick={() => { logout(); navigate('/login') }}>
+        <button className="al-logout" onClick={() => { logout(); navigate('/') }}>
           ⎋ Sign out
         </button>
       </aside>
