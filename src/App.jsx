@@ -11,8 +11,6 @@ import './auth-additions.css'
 import './settings.css'
 import './location.css'
 
-
-
 import LandingPage      from './pages/LandingPage'
 import Login            from './pages/auth/Login'
 import Register         from './pages/auth/Register'
