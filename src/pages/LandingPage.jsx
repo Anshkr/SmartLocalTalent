@@ -553,19 +553,19 @@ export default function LandingPage() {
             {/* ── Social Media Icons ── */}
             <div className="lp-social-row">
               <a className="lp-social-btn twitter"
-                href="https://twitter.com/smarttalent"
+                href="https://x.com/Local__Talent"
                 target="_blank" rel="noopener noreferrer"
                 title="Follow us on X (Twitter)">
                 <TwitterIcon />
               </a>
               <a className="lp-social-btn instagram"
-                href="https://instagram.com/smarttalent"
+                href="https://www.instagram.com/smartlocaltalent"
                 target="_blank" rel="noopener noreferrer"
                 title="Follow us on Instagram">
                 <InstagramIcon />
               </a>
               <a className="lp-social-btn linkedin"
-                href="https://linkedin.com/company/smarttalent"
+                href="https://www.linkedin.com/in/smart-local-talent-9a81583b3"
                 target="_blank" rel="noopener noreferrer"
                 title="Connect on LinkedIn">
                 <LinkedInIcon />
@@ -604,19 +604,19 @@ export default function LandingPage() {
           <div className="lp-social-follow">
             <span className="lp-social-follow-label">Follow us</span>
             <a className="lp-social-btn twitter"
-              href="https://twitter.com/smarttalent"
+              href="https://x.com/Local__Talent"
               target="_blank" rel="noopener noreferrer"
               style={{ width:30, height:30, borderRadius:8 }}>
               <TwitterIcon />
             </a>
             <a className="lp-social-btn instagram"
-              href="https://instagram.com/smarttalent"
+              href="https://www.instagram.com/smartlocaltalent"
               target="_blank" rel="noopener noreferrer"
               style={{ width:30, height:30, borderRadius:8 }}>
               <InstagramIcon />
             </a>
             <a className="lp-social-btn linkedin"
-              href="https://linkedin.com/company/smarttalent"
+              href="https://www.linkedin.com/in/smart-local-talent-9a81583b3"
               target="_blank" rel="noopener noreferrer"
               style={{ width:30, height:30, borderRadius:8 }}>
               <LinkedInIcon />

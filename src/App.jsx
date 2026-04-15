@@ -39,6 +39,7 @@ import CustomerProfile      from './pages/customer/CustomerProfile'
 import CustomerOrderHistory from './pages/customer/CustomerOrderHistory'
 import PaymentPage          from './pages/customer/PaymentPage'
 import CustomerSettings     from './pages/customer/CustomerSettings'
+import TransactionHistory   from './pages/customer/TransactionHistory'
 
 
 // Admin
@@ -98,6 +99,7 @@ export default function App() {
         <Route path="/customer/orders"         element={<Cu><CustomerOrderHistory /></Cu>} />
         <Route path="/customer/payment/:jobId" element={<Cu><PaymentPage /></Cu>} />
         <Route path="/customer/settings"       element={<Cu><CustomerSettings /></Cu>} />
+        <Route path="/customer/transactions"    element={<Cu c={<TransactionHistory />}/>} />
 
         {/* Admin */}
         <Route path="/admin"             element={<Ad><AdminOverview /></Ad>} />
