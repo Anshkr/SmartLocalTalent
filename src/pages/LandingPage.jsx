@@ -591,7 +591,7 @@ export default function LandingPage() {
           </div>
           <div className="lp-fcol">
             <div className="lp-fcol-title">Contact</div>
-            <a>support@smarttalent.com</a>
+            <a>smartlocaltalent@gmail.com</a>
             <a>Gurugram, Haryana</a>
             <a>Delhi NCR, India</a>
           </div>
