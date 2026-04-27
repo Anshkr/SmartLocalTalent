@@ -63,17 +63,6 @@ zustand: ^5.0.12
 - **lint**: `npm run lint`
 - **preview**: `npm run preview`
 
-## 📸 Screenshots
-
-> **Tip:** You can auto-generate a beautiful project mockup image using the **Screenshot** button above!
-
-<p align="center">
-  <img src="https://via.placeholder.com/800x400?text=Main+Application+View" alt="Main Application View" width="80%"/>
-</p>
-
-<p align="center">
-  <img src="https://via.placeholder.com/800x400?text=Feature+Showcase" alt="Feature Showcase" width="80%"/>
-</p>
 
 ## 📁 Project Structure
 
